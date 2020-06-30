@@ -1,6 +1,5 @@
 #!/bin/bash
 set -e
-set -x
 
 export N8N_PORT=$PORT
 export N8N_PROTOCOL=https
@@ -11,4 +10,9 @@ export DB_POSTGRESDB_PORT=$POSTGRESQL_ADDON_PORT
 export DB_POSTGRESDB_USER=$POSTGRESQL_ADDON_USER
 export DB_POSTGRESDB_PASSWORD=POSTGRESQL_ADDON_PASSWORD
 export DB_POSTGRESDB_SCHEMA=n8n
-./node_modules/.bin/n8n start
+if [ -z "$N8N_HOST" ]
+then
+    export N8N_HOST=$(echo "$APP_ID" | tr '_' '-').cleverapps.io
+fi
+echo "Host: $N8N_HOST"
+./node_modules/.bin/n8n
