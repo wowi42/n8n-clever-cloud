@@ -5,6 +5,8 @@
 3. in your application environment variables you should now see the info you need to connect to your db
 4. in your application environment variables add ```N8N_HOST=n8n.example.com``` (by default, it's going to fallback on the .cleverapps.io domain, but don't use the cleverapps domain in production)
 5. in your application environment variables add ```N8N_ENCRYPTION_KEY=<SOME RANDOM STRING>``` (Mandatory !!!)
+5. in your application environment variables add ```N8N_BASIC_AUTH_USER=<USER>``` (Mandatory !!!)
+5. in your application environment variables add ```N8N_BASIC_AUTH_PASSWORD=<PASSWORD>``` (Mandatory !!!)
 6. you can now build and start the application
 
 # How it works
@@ -38,7 +40,7 @@
     #!/bin/bash
     set -e
     set -x
-	
+	export N8N_BASIC_AUTH_ACTIVE=true
     export N8N_PORT=$PORT
     export N8N_PROTOCOL=https
     export DB_TYPE=postgresdb
