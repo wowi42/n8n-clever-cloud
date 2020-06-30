@@ -6,7 +6,6 @@
         "n8n": "0.71.0"
     },
     "scripts" : {
-        "install" : "./build.sh",
         "start" : "./run.sh"
     },
     "author": "Loic Tosser <wowi42>",
