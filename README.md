@@ -1,15 +1,11 @@
 # How to set up n8n on Clever Cloud
 
 1. create a new NodeJs application linked to a fork of this repo
-2. in your application environment variables add ```N8N_HOST=n8n.example.com``` (don't use the cleverapps domain in production)
-3. you can now build and start the application, be aware however that if you restart it your data will not be persisted (see next section to learn how to persist data)
-
-# Persisting Data on a database
-
-For this example we will use postgresql however the procedure shouldn't be too different with any other type of database supported by n8n.
-
-1. create your database add-on on clever cloud and link it to the application
-2. in your application environment variables you should now see the info you need to connect to your db
+2. create your database add-on on clever cloud and link it to the application
+3. in your application environment variables you should now see the info you need to connect to your db
+4. in your application environment variables add ```N8N_HOST=n8n.example.com``` (by default, it's going to fallback on the .cleverapps.io domain, but don't use the cleverapps domain in production)
+5. in your application environment variables add ```N8N_ENCRYPTION_KEY=<SOME RANDOM STRING>``` (Mandatory !!!)
+6. you can now build and start the application
 
 # How it works
 
@@ -23,7 +19,6 @@ For this example we will use postgresql however the procedure shouldn't be too d
         "n8n": "0.71.0"
     },
     "scripts" : {
-        "install" : "./build.sh",
         "start" : "./run.sh"
     },
     "author": "Loic Tosser <wowi42>",
@@ -38,15 +33,7 @@ For this example we will use postgresql however the procedure shouldn't be too d
 }
     ```
 2. then create both scripts, the install one will build n8n and the start one will start the n8n-server binary
-3. in the install script put:
-    ```
-    #!/bin/bash
-    set -e
-    set -x
-	
-    npm install
-    ```
-4. in the start script put:
+3. in the start script put:
     ```
     #!/bin/bash
     set -e
@@ -63,4 +50,4 @@ For this example we will use postgresql however the procedure shouldn't be too d
     export DB_POSTGRESDB_SCHEMA=n8n
     ./node_modules/.bin/n8n start
     ```
-5. n8n is now ready to start
+4. n8n is now ready to start
