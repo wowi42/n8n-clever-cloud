@@ -18,5 +18,6 @@ then
     export N8N_HOST=$(echo "$APP_ID" | tr '_' '-').cleverapps.io
 fi
 echo "Host: $N8N_HOST"
+env
 ./node_modules/.bin/n8n start
 exit 1
