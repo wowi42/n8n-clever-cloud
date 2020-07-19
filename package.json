@@ -3,10 +3,10 @@
     "version": "1.0.0",
     "description": "n8n on clevercloud",
     "dependencies": {
-        "n8n": "0.71.0"
+        "n8n": "0.74.0"
     },
-    "scripts" : {
-        "start" : "./run.sh"
+    "scripts": {
+        "start": "./run.sh"
     },
     "author": "Loic Tosser <wowi42>",
     "license": "ISC",
